@@ -7,9 +7,11 @@ async function apiUrl(config = {}) {
   const entity = config.entity ? config.entity : "characters";
   const base = `http://gateway.marvel.com/v1/public/${entity}`;
   const id = config.id ? `/${config.id}` : "";
+  const suffix = config.suffix ? `/${config.suffix}` : "";
   const offset = config.offset ? `&offset=${config.offset}` : "";
+  const limit = config.limit ? `&limit=${config.limit}` : "";
 
-  return `${base}${id}?ts=${ts}&apikey=${key}&hash=${hash}${offset}`;
+  return `${base}${id}${suffix}?ts=${ts}&apikey=${key}&hash=${hash}${offset}${limit}`;
 }
 
 export default async function (config = {}) {
