@@ -27,3 +27,14 @@ yarn && yarn dev
 ```
 
 App should be available at [localhost:3000](http://localhost:3000)
+
+## Stack
+
+This app use the following elements
+
+- [Nuxt 3 RC](https://v3.nuxtjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [FontAwesome](https://fontawesome.com/)
+- [Open Sans font](https://fonts.google.com/specimen/Open+Sans)
+- [Marvel logo](https://fr.wikipedia.org/wiki/Marvel_Comics#/media/Fichier:Marvel_Logo.svg)
+- [CSS FX](https://cssfx.netlify.app)
