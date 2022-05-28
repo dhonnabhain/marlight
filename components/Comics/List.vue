@@ -33,7 +33,7 @@ const store = useComicsStore();
 const { parent, count, entity } = toRefs(props);
 
 async function loadComics() {
-  comics.value = await store.loadFromSerie({
+  comics.value = await store.loadFromEntity({
     id: parent.value.id,
     entity: entity.value,
     limit: count.value,
