@@ -1,9 +1,19 @@
 <template>
   <li
     v-if="internalComic"
-    class="w-full shadow-sm border border-gray-200 rounded-md truncate hover:text-white hover:bg-red-500 transition duration-100"
+    class="w-32 rounded-md truncate hover:text-white flex justify-center xl:w-48"
   >
-    <img :src="image" :alt="`${internalComic.title} cover`" class="w-32" />
+    <img v-if="image" :src="image" :alt="`${internalComic.title} cover`" class="w-full" />
+
+    <p
+      v-else
+      class="w-32 h-48 bg-slate-50 flex justify-center items-center prose break-all flex-wrap xl:w-48 xl:h-72"
+    >
+      <div class="whitespace-normal break-words text-center p-2">
+        <p>No cover for</p>
+        <p>{{ internalComic.title }}</p>
+      </div>
+    </p>
   </li>
 </template>
 
@@ -11,15 +21,17 @@
 import { useComicsStore } from "@@/stores/comics";
 
 const props = defineProps({
-  comic: { type: Object, required: true },
+  comic: { type: Object, default: {} },
 });
+
 const { comic } = toRefs(props);
 const internalComic = ref(null);
 const store = useComicsStore();
+const id = computed(() => useResourceId(comic));
+const link = computed(() => `/comics/${id.value}`);
 
-const id = computed(() => comic.value.resourceURI.split("/").at(-1));
 const image = computed(() =>
-  internalComic.value
+  internalComic.value && internalComic.value.images.length > 0
     ? `${internalComic.value.images[0].path}.${internalComic.value.images[0].extension}`
     : null
 );

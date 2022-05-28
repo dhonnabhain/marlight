@@ -4,7 +4,10 @@
       Series
     </h2>
 
-    <ul role="list" class="mt-3 grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2">
+    <ul
+      role="list"
+      class="mt-3 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-12"
+    >
       <SeriesSerie v-for="serie in series.items" :serie="serie" />
     </ul>
   </div>
