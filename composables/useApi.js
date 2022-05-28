@@ -15,9 +15,5 @@ async function apiUrl(config = {}) {
 }
 
 export default async function (config = {}) {
-  const res = (await axios.get(await apiUrl(config))).data;
-
-  console.log(res);
-
-  return res;
+  return (await axios.get(await apiUrl(config))).data;
 }
