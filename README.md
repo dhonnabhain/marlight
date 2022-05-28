@@ -38,3 +38,4 @@ This app use the following elements
 - [Open Sans font](https://fonts.google.com/specimen/Open+Sans)
 - [Marvel logo](https://fr.wikipedia.org/wiki/Marvel_Comics#/media/Fichier:Marvel_Logo.svg)
 - [CSS FX](https://cssfx.netlify.app)
+- [Vercel](https://vercel.com/)
