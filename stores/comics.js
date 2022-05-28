@@ -23,15 +23,56 @@ export const useComicsStore = defineStore({
         console.log("Ooops", e);
       }
     },
-    async loadFromSerie({ id, entity, limit }) {
+    async loadFromEntity({ id, entity, limit }) {
       try {
-        const {
-          data: { results },
-        } = await useApi({ id, entity, limit, suffix: "comics" });
+        let offset = 0;
+        let comics = [];
+        const groups = Math.floor(limit / 20);
 
-        results.forEach((comic) => (this.comics[comic.id] = comic));
+        if (limit > 20) {
+          for (let idx = 0; idx < Math.floor(limit / 20) ?? 1; idx++) {
+            const {
+              data: { results },
+            } = await useApi({
+              id,
+              entity,
+              offset,
+              suffix: "comics",
+            });
 
-        return results;
+            comics = [...comics, ...results];
+
+            offset = offset + 20;
+          }
+        } else {
+          const {
+            data: { results },
+          } = await useApi({
+            id,
+            entity,
+            offset,
+            suffix: "comics",
+          });
+
+          comics = results;
+        }
+
+        comics.forEach((comic) => (this.comics[comic.id] = comic));
+
+        return comics;
+
+        // const {
+        //   data: { results },
+        // } = await useApi({
+        //   id,
+        //   entity,
+        //   limit: limit > 100 ? 100 : limit,
+        //   suffix: "comics",
+        // });
+
+        // results.forEach((comic) => (this.comics[comic.id] = comic));
+
+        // return results;
       } catch (e) {
         console.log("Ooops", e);
       }
