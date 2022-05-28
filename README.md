@@ -1,42 +1,29 @@
-# Nuxt 3 Minimal Starter
+# Marlight
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Interview app for [MyLight](https://www.mylight-systems.com) using the [Marvel API](https://developer.marvel.com) to show at least:
 
-## Setup
+- Use [Vue.js v3](https://vuejs.org) and [Pinia](https://pinia.vuejs.org)
+- A page with twenty Marvel characters
+- A navigation to see next / previous twenty set of characters
+- Show character detail on click
 
-Make sure to install the dependencies:
+A live version is available [here](https://marlight.vercel.app/)
 
-```bash
-# yarn
-yarn install
+## Requirements
 
-# npm
-npm install
+To run this project you must have:
 
-# pnpm
-pnpm install --shamefully-hoist
-```
+- Node.js 16.x
+- [Marvel API account](https://developer.marvel.com)
 
-## Development Server
-
-Start the development server on http://localhost:3000
+## Run
 
 ```bash
-npm run dev
+cp .env.example .env
+
+// Complete the .env with your own credentials
+
+yarn && yarn dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+App should be available at [localhost:3000](http://localhost:3000)
