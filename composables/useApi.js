@@ -5,7 +5,7 @@ async function apiUrl(config = {}) {
   const key = useRuntimeConfig().public.MARVEL_PUBLIC;
 
   const entity = config.entity ? config.entity : "characters";
-  const base = `http://gateway.marvel.com/v1/public/${entity}`;
+  const base = `https://gateway.marvel.com/v1/public/${entity}`;
   const id = config.id ? `/${config.id}` : "";
   const suffix = config.suffix ? `/${config.suffix}` : "";
   const offset = config.offset ? `&offset=${config.offset}` : "";
