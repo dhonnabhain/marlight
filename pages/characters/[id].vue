@@ -1,39 +1,47 @@
 <template>
-  <main class="sm:w-2/3 sm:mx-auto">
+  <main class="sm:w-2/3 sm:mx-auto md:w-4/5">
     <Back />
 
-    <article v-if="currentCharacter" class="p-8 sm:flex sm:gap-8">
-      <img
-        :src="thumbnail"
-        :alt="`${currentCharacter.name} picture`"
-        class="block object-cover rounded-lg sm:w-96 sm:self-start drop-shadow-xl"
-      />
-
-      <div class="flex flex-col">
-        <h2
-          class="text-3xl font-bold leading-7 text-gray-900 sm:text-4xl sm:truncate mt-8"
-        >
-          {{ currentCharacter?.name }}
-        </h2>
-
-        <p
-          :class="{ italic: !hasDescription }"
-          class="prose prose-sm prose-slate dark:prose-invert mt-4"
-        >
-          {{
-            hasDescription ? currentCharacter.description : missingDescription
-          }}
-        </p>
-
-        <ExternalLink
-          :url="urls.wiki"
-          label="Read more"
-          icon="arrow-up-right-from-square"
-          class="mt-4 w-full sm:w-auto sm:self-start"
+    <article v-if="currentCharacter" class="p-8">
+      <div class="sm:flex sm:gap-8">
+        <img
+          :src="thumbnail"
+          :alt="`${currentCharacter.name} picture`"
+          class="block object-cover rounded-lg sm:w-96 sm:self-start drop-shadow-xl"
         />
 
-        <SeriesList :series="currentCharacter.series" />
+        <div class="flex flex-col">
+          <h2
+            class="text-3xl font-bold leading-7 text-gray-900 sm:text-4xl sm:truncate mt-8"
+          >
+            {{ currentCharacter?.name }}
+          </h2>
+
+          <p
+            :class="{ italic: !hasDescription }"
+            class="prose prose-sm prose-slate dark:prose-invert mt-4"
+          >
+            {{
+              hasDescription ? currentCharacter.description : missingDescription
+            }}
+          </p>
+
+          <ExternalLink
+            :url="urls.wiki"
+            label="Read more"
+            icon="arrow-up-right-from-square"
+            class="mt-4 w-full sm:w-auto sm:self-start"
+          />
+        </div>
       </div>
+
+      <SeriesList :series="currentCharacter.series" />
+
+      <ComicsList
+        :parent="currentCharacter"
+        :count="currentCharacter.comics.available"
+        entity="characters"
+      />
     </article>
   </main>
 </template>
