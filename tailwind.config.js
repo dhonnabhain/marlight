@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         app: "OpenSans",
       },
+      screens: {
+        "3xl": "1792px",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
